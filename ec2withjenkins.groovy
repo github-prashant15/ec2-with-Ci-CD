@@ -5,20 +5,21 @@ pipeline {
        terraform 'terraform'
     }
     stages{
-        stage('Pull'){
+        stage ('Pull'){
             steps{
                 git 'https://github.com/github-prashant15/ec2-instaces.git'
 
             }
         }
-        stage('Terraform Init'){
-            steps{
-                sh '''terraform int'''
+        stage ("terraform init"){
+            steps {
+                sh ('terraform init')
             }
         }
-        stage('Terraform apply'){
+        stage ('terraform Action') {
             steps{
-                sh '''terraform apply --auto-approve'''
+                echo "Terraform action is --> ${action}"
+                sh ('terraform ${action} --auto-approve')
             }
         }
 
