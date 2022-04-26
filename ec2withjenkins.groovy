@@ -7,19 +7,19 @@ pipeline {
     stages{
         stage ('Pull'){
             steps{
-                git 'https://github.com/github-prashant15/ec2-instaces.git'
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/github-prashant15/ec2-with-Ci-CD.git']]])
 
             }
         }
         stage ("terraform init") {
             steps {
-               sh ('terraform init')
+               sh 'terraform init'
             }
         }
 
         stage ('terraform Apply') {
             steps {
-                sh ('terraform apply')
+                sh 'terraform apply  --auto-approve'
             }
         }
 
