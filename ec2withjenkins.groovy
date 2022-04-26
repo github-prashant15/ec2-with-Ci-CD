@@ -1,4 +1,5 @@
-pipeline{
+/* groovylint-disable CompileStatic */
+pipeline {
     agent any
     tools {
        terraform 'terraform'
@@ -6,7 +7,7 @@ pipeline{
     stages{
         stage('Pull'){
             steps{
-                git 'https://github.com/easyawslearn/terraform-aws-instance.git'
+                git 'https://github.com/github-prashant15/ec2-instaces.git'
 
             }
         }
